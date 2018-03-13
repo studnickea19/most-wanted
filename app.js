@@ -157,7 +157,7 @@ function searchByOccupation(people) {
 
 function getFamily(person, people){
 	let newArray = people.filter(function (el){
-		if(person.currentSpouse == el.id){
+		if(person.currentSpouse === el.id){
 			return true;
 		}
 		else if(checkParent(person.parents, el)){
@@ -222,10 +222,10 @@ function mainMenu(person , people){
     	displayPerson(person);
     break;
     case "family":
-    	displayFamily(person,family);
+    	displayFamily(person,people);
     break;
     case "descendants":
-    // TODO: get person's descendants
+    	displayDescendants(person,people)
     break;
     case "restart":
     	app(people); // restart
@@ -278,6 +278,36 @@ function displayFamily(person,people){
       familyList += family[i].firstName +" "+ family[i].lastName+"\n";
     }
     alert(familyList);
+}
+
+function displayDescendants(person, people){
+	let arrayDescendants = getDescendants(person, people);
+	let descendants = "";
+	for(let i = 0;i < arrayDescendants.length;i++){
+		descendants += arrayDescendants[i].firstName+" "+arrayDescendants[i].lastName+"/n";
+	}
+	alert(descendants);
+}
+
+function getDescendants(person, people){
+	let arrayDescendants = [person];
+    for(let i = 0;i < arrayDescendants.length;i++){
+    	let family = getFamily(arrayDescendants);
+    	for(let j = 0; j < family.length;j++){
+    		if(person.currentSpouse === family[j].id){
+    			family.splice(j,1);
+    		}
+    	}
+    	arrayDescendants.concat(family);
+    	for(let j = 0;j < arrayDescendants.length-1;j++){
+    		for(let k = j+1;k < arrayDescendants.length;k++){
+    			if(arrayDescendants[j] === arrayDescendants[k]){
+    				arrayDescendants.splice[k,1];
+    			}
+    		}
+    	}
+    }
+    return arrayDescendants;
 }
 
 // function that prompts and validates user input
