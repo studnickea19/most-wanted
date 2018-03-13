@@ -13,14 +13,14 @@ function app(people){
     searchByTraits(people);
     break;
     default:
-    alert("Wrong! Please try again, following the instructions dummy. :)");
+    alert("Invalid entry. Please type either YES or NO");
     app(people); // restart app
     break;
   }
 }
 
 function searchByTraits(people) {
-  let userSearchChoice = prompt("What would you like to search by? 'height', 'weight', 'eye color', 'gender', 'age', 'occupation'.");
+  let userSearchChoice = prompt("What would you like to search by? Please type either 'height', 'weight', 'eye color', 'gender', 'age', 'occupation'.");
   let filteredPeople;
 
   switch(userSearchChoice) {
@@ -44,7 +44,7 @@ function searchByTraits(people) {
     	break;
     
     default:
-      alert("You entered an invalid search type! Please try again.");
+      alert("Invalid search type. Please type one of the following: 'height', 'weight', 'eye color', 'gender', 'age', 'occupation'");
       searchByTraits(people);
       break;
   }  
@@ -58,7 +58,7 @@ function searchByTraits(people) {
 }
 
 function searchByHeight(people) {
-  let userInputHeight = prompt("How tall is the person?");
+  let userInputHeight = prompt("How tall is the person in cm?");
 
   let newArray = people.filter(function (el) {
     if(el.height == userInputHeight) {
@@ -71,7 +71,7 @@ function searchByHeight(people) {
 }
 
 function searchByWeight(people) {
-  let userInputWeight = prompt("How much does the person weigh?");
+  let userInputWeight = prompt("How much does the person weigh in lbs?");
 
   let newArray = people.filter(function (el) {
     if(el.weight == userInputWeight) {
@@ -97,7 +97,7 @@ function searchByEyeColor(people) {
 }
 
 function searchByGender(people) {
-  let userInputGender = prompt("What is the person's gender?").toLowerCase();
+  let userInputGender = prompt("What is the person's gender? (male/female)").toLowerCase();
 
   let newArray = people.filter(function (el) {
     if(el.gender == userInputGender) {
@@ -218,6 +218,7 @@ function mainMenu(person , people){
     default:
     return mainMenu(person, people); // ask again
   }
+  displayPerson(person);
 }
 
 function searchByName(people){

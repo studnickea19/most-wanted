@@ -1,6 +1,7 @@
 body{
 	background-color: #474646;
 	color:  white;
+	font-family: courier;
 }
 
 .container{
@@ -37,6 +38,8 @@ button{
 	color: white;
 	border-color: #710303;
 	border-width:  4px;
+	font-size: 15px;
+	font-weight: normal;
 }
 button:hover{
 	background-color: #710303;
@@ -50,9 +53,19 @@ button:active{
 	border-color: #710303;
 	box-shadow: inset 2px #5555;
 }
-
+button:visited{
+	display: flex;
+	width: auto;
+	height: auto;
+	margin: auto;
+	color: white;
+	border-color: #710303;
+	border-width:  4px;
+	font-size: 15px;
+	font-weight: normal;
+}
 button:visited:focus{
 	background-color: #710303;
 	color: white;
 	border-color: #710303;	
-}
+} 
