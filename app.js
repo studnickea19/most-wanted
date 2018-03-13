@@ -143,11 +143,53 @@ function searchByOccupation(people) {
 }
 
 function getFamily(person, people){
-	//TODO
+	let newArray = people.filter(function (el){
+		if(person.currentSpouse == el.id){
+			return true;
+		}
+		else if(checkParent(person.parents, el)){
+			return true;
+		}
+		else if(checkChild(person, el)){
+			return true;
+		}
+		else if(person.parents.length > 0){
+			return checkSiblings(person.parents,el);
+		}
+			
+	});
+}
+
+function checkParent(parents , person){
+	for(let i = 0; i<parents.length;i++){
+		if(parents[i] === person.id){
+			return true;
+		}
+	}
+	return false;
+}
+
+function checkChild(person1 , person2){
+	let parents = person2.parents;
+	if(parents > 0){
+		for(let i = 0;i < parents.length;i++){
+			if(parents[i] === person1.id){
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+function checkSiblings(parents , person){
+	if(parents === person.parents){
+		return true;
+	}
+	return false;
 }
 
 // Menu function to call once you find who you are looking for
-function mainMenu(person, people){
+function mainMenu(person , people){
 
   /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
 
