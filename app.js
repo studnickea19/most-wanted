@@ -49,7 +49,12 @@ function searchByTraits(people) {
       break;
   }  
   
-  
+  if(filteredPeople.length > 1){
+  	for(let i = 0; i < filteredPeople.length;i++){
+  		console.log(filteredPeople[i].firstName);
+  	}
+  	searchByTraits(filteredPeople);
+  }
 
   let foundPerson = filteredPeople[0];
 
