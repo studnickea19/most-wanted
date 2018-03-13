@@ -30,17 +30,44 @@ function searchByTraits(people) {
     case "weight":
       filteredPeople = searchByWeight(people);
       break;
-    // so on and so forth
+    case "eye color":
+    	filteredPeople = searchByEyeColor(people);
+    	break;
+    case "gender":
+    	filteredPeople = searchByGender(people);
+    	break;
+    case "age":
+    	filteredPeople = searchByAge(people);
+    	break;
+    case "occupation":
+    	filteredPeople = searchByOccupation(people);
+    	break;
+    
     default:
       alert("You entered an invalid search type! Please try again.");
       searchByTraits(people);
       break;
   }  
+  
+  //TODO: Return remaining people that fit in the filter
 
   let foundPerson = filteredPeople[0];
 
   mainMenu(foundPerson, people);
 
+}
+
+function searchByHeight(people) {
+  let userInputHeight = prompt("How tall is the person?");
+
+  let newArray = people.filter(function (el) {
+    if(el.height == userInputHeight) {
+      return true;
+    }
+    // return true if el.height matches userInputHeight
+  });
+
+  return newArray;
 }
 
 function searchByWeight(people) {
@@ -50,10 +77,73 @@ function searchByWeight(people) {
     if(el.weight == userInputWeight) {
       return true;
     }
-    // return true if el.height matches userInputHeight
+    // return true if el.weight matches userInputWeight
   });
 
   return newArray;
+}
+
+function searchByEyeColor(people) {
+  let userInputEyeColor = prompt("What is the person's eye color?").toLowerCase();
+
+  let newArray = people.filter(function (el) {
+    if(el.eyeColor == userInputEyeColor) {
+      return true;
+    }
+    // return true if el.eyeColor matches userInputEyeColor
+  });
+
+  return newArray;
+}
+
+function searchByGender(people) {
+  let userInputGender = prompt("What is the person's gender?").toLowerCase();
+
+  let newArray = people.filter(function (el) {
+    if(el.gender == userInputGender) {
+      return true;
+    }
+    // return true if el.gender matches userInputGender
+  });
+
+  return newArray;
+}
+
+function searchByAge(people) {
+  let userInputEyeColor = prompt("How old is the person?").toLowerCase();
+
+  let newArray = people.filter(function (el) {
+    if(getAge(el.dob) == userInputAge) {
+      return true;
+    }
+    // return true if getAge(el.dob) matches userInputAge
+  });
+
+  return newArray;
+}
+
+function getAge(dob){
+	let today = new Date();
+	let birthday = new Date(dob);
+	let age = Math.abs(today- birthday)/(31557600000);
+	return parseInt(age);
+}
+
+function searchByOccupation(people) {
+  let userInputOccupation = prompt("What is the person's occupation?").toLowerCase();
+
+  let newArray = people.filter(function (el) {
+    if(el.occupation == userInputOccupation) {
+      return true;
+    }
+    // return true if el.occupation matches userInputOccupation
+  });
+
+  return newArray;
+}
+
+function getFamily(person, people){
+	//TODO
 }
 
 // Menu function to call once you find who you are looking for
