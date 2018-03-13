@@ -50,9 +50,10 @@ function searchByTraits(people) {
   }  
   
   if(filteredPeople.length > 1){
-  	for(let i = 0; i < filteredPeople.length;i++){
+  	/*for(let i = 0; i < filteredPeople.length;i++){
   		console.log(filteredPeople[i].firstName);
-  	}
+  	}*/
+  	alert("We narrowed down the database but we need more information to narrow it down further.");
   	searchByTraits(filteredPeople);
   }
 
@@ -170,6 +171,7 @@ function getFamily(person, people){
 		}
 			
 	});
+	return newArray;
 }
 
 function checkParent(parents , person){
@@ -235,10 +237,10 @@ function mainMenu(person , people){
 }
 
 function searchByName(people){
-  var firstName = promptFor("What is the person's first name?", chars);
-  var lastName = promptFor("What is the person's last name?", chars);
+  var firstName = promptFor("What is the person's first name?", chars).toLowerCase();
+  var lastName = promptFor("What is the person's last name?", chars).toLowerCase();
   let newArray = people.filter(function (el) {
-    if(el.firstName + el.lastName == firstName + lastName) {
+    if(el.firstName.toLowerCase() + el.lastName.toLowerCase() == firstName + lastName) {
       return true;
     }
     // return true if el. First/Last is equal to input First/Last
