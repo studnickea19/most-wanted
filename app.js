@@ -51,7 +51,7 @@ function searchByTraits(people) {
       break;
   }  
   
-  //TODO: Return remaining people that fit in the filter
+  
 
   let foundPerson = filteredPeople[0];
 
@@ -131,6 +131,13 @@ function getAge(dob){
 	return parseInt(age);
 }
 
+function setAge(people){
+	people.map(function (el){
+		return getAge(el.dob);
+	});
+	return people;
+}
+
 function searchByOccupation(people) {
   let userInputOccupation = prompt("What is the person's occupation?").toLowerCase();
 
@@ -184,8 +191,10 @@ function checkChild(person1 , person2){
 }
 
 function checkSiblings(parents , person){
-	if(parents === person.parents){
-		return true;
+	if(parents.length > 0){
+		if(parents === person.parents){
+			return true;
+		}
 	}
 	return false;
 }
