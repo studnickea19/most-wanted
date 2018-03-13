@@ -43,7 +43,15 @@ button:hover{
 	color: white;
 	border-color: #710303;
 }
-button:visited:focus:active{
+
+button:active{
+	background-color: #710303;
+	color: white;
+	border-color: #710303;
+	box-shadow: inset 2px #5555;
+}
+
+button:visited:focus{
 	background-color: #710303;
 	color: white;
 	border-color: #710303;	

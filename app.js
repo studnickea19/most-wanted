@@ -221,10 +221,10 @@ function mainMenu(person , people){
 }
 
 function searchByName(people){
-  var firstName = promptFor("What is the person's first name?", chars);
-  var lastName = promptFor("What is the person's last name?", chars);
+  var firstName = promptFor("What is the person's first name?", chars).toLowerCase();
+  var lastName = promptFor("What is the person's last name?", chars).toLowerCase();
   let newArray = people.filter(function (el) {
-    if(el.firstName + el.lastName == firstName + lastName) {
+    if(el.firstName.toLowerCase() + el.lastName.toLowerCase() == firstName + lastName) {
       return true;
     }
     // return true if el. First/Last is equal to input First/Last
