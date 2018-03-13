@@ -229,7 +229,8 @@ function searchByName(people){
     }
     // return true if el. First/Last is equal to input First/Last
   });
-  return newArray;
+  let foundPerson = newArray[0];
+  mainMenu(foundPerson, people);
 }
 
 // alerts a list of people
@@ -265,13 +266,3 @@ function yesNo(input){
 function chars(input){
   return true; // default validation only
 }
-//waiting to complete this until we have all functions completed.
-// function displayPersonInfo(person){
-//   document.getElementByID('name').innerHTML = "firstName + ' ' + lastName";
-//   document.getElementByID('gender').innerHTML = person.gender;
-//   document.getElementByID('age').innerHTML = getAge(person.dob);
-//   document.getElementByID('height').innerHTML = person.height;
-//   document.getElementByID('weight').innerHTML = person.weight;
-//   document.getElementByID('eye-color').innerHTML = person.eyeColor;
-//   document.getElementByID('occupation').innerHTML = person.occupation;
-// }
