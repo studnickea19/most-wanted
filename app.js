@@ -8,11 +8,9 @@ function app(people){
   switch(searchType){
     case 'yes':
     searchByName(people);
-//    console.log("you made it");
     break;
     case 'no':
     searchByTraits(people);
-    console.log("you made it");
     break;
     default:
     alert("Wrong! Please try again, following the instructions dummy. :)");
@@ -183,9 +181,13 @@ function mainMenu(person, people){
 function searchByName(people){
   var firstName = promptFor("What is the person's first name?", chars);
   var lastName = promptFor("What is the person's last name?", chars);
-
-  // TODO: find the person using the name they entered
-
+  let newArray = people.filter(function (el) {
+    if(el.firstName + el.lastName == firstName + lastName) {
+      return true;
+    }
+    // return true if el. First/Last is equal to input First/Last
+  });
+  return newArray;
 }
 
 // alerts a list of people
@@ -221,3 +223,13 @@ function yesNo(input){
 function chars(input){
   return true; // default validation only
 }
+//waiting to complete this until we have all functions completed.
+// function displayPersonInfo(person){
+//   document.getElementByID('name').innerHTML = "firstName + ' ' + lastName";
+//   document.getElementByID('gender').innerHTML = person.gender;
+//   document.getElementByID('age').innerHTML = getAge(person.dob);
+//   document.getElementByID('height').innerHTML = person.height;
+//   document.getElementByID('weight').innerHTML = person.weight;
+//   document.getElementByID('eye-color').innerHTML = person.eyeColor;
+//   document.getElementByID('occupation').innerHTML = person.occupation;
+// }
