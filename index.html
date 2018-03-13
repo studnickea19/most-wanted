@@ -22,10 +22,21 @@
  <!--  					<h2>Do you know the name of the person you are looking for? </h2>
   					<input id="data" type="text" name="input" value="Enter 'yes' or 'no'"> -->
   				</form>
-  				<button onClick="app()">Start Searching</button>
+  				<button onClick="app(data)">Start Searching</button>
   			</div>
   			<div class="eight columns">
-  				
+  				<div id="display-results">
+            <table class="display-info">
+              <th>Display Results</th>
+              <tr><td>Name:</td><td></td></tr>
+              <tr><td>Gender:</td><td></td></tr>
+              <tr><td>Age:</td><td></td></tr>
+              <tr><td>Height:</td><td></td></tr>
+              <tr><td>Weight:</td><td></td></tr>
+              <tr><td>Eye Color:</td><td></td></tr>
+              <tr><td>Occupation:</td><td></td></tr>
+            </table>    
+          </div>
   			</div>
   		</div>
   		<div class="row">

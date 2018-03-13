@@ -7,10 +7,12 @@ function app(people){
   var searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
   switch(searchType){
     case 'yes':
-    // TODO: search by name
+    searchByName(people);
+//    console.log("you made it");
     break;
     case 'no':
     searchByTraits(people);
+    console.log("you made it");
     break;
     default:
     alert("Wrong! Please try again, following the instructions dummy. :)");
