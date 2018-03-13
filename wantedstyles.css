@@ -20,9 +20,13 @@ div{
 h1{
 	text-align: center;
 }
-table.display-results{
-	border-width: 1px;
-	justify-content: center;
+table, td{
+	border-collapse: collapse;
+	/* border: 1px solid #efefef; */
+}
+th{
+	border-bottom: 3px solid #efefef;
+	height: 25px;
 }
 
 button{
@@ -38,4 +42,9 @@ button:hover{
 	background-color: #710303;
 	color: white;
 	border-color: #710303;
+}
+button:visited:focus:active{
+	background-color: #710303;
+	color: white;
+	border-color: #710303;	
 }

@@ -8,11 +8,9 @@ function app(people){
   switch(searchType){
     case 'yes':
     searchByName(people);
-//    console.log("you made it");
     break;
     case 'no':
     searchByTraits(people);
-    console.log("you made it");
     break;
     default:
     alert("Wrong! Please try again, following the instructions dummy. :)");
@@ -234,9 +232,14 @@ function mainMenu(person , people){
 function searchByName(people){
   var firstName = promptFor("What is the person's first name?", chars);
   var lastName = promptFor("What is the person's last name?", chars);
-
-  // TODO: find the person using the name they entered
-
+  let newArray = people.filter(function (el) {
+    if(el.firstName + el.lastName == firstName + lastName) {
+      return true;
+    }
+    // return true if el. First/Last is equal to input First/Last
+  });
+  let foundPerson = newArray[0];
+  mainMenu(foundPerson, people);
 }
 
 // alerts a list of people
