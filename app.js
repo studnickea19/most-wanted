@@ -49,7 +49,7 @@ function searchByTraits(people) {
       break;
   }  
   
-  //TODO: Return remaining people that fit in the filter
+  // TODO: Return remaining people that fit in the filter
 
   let foundPerson = filteredPeople[0];
 
@@ -105,7 +105,6 @@ function searchByGender(people) {
     }
     // return true if el.gender matches userInputGender
   });
-
   return newArray;
 }
 
@@ -212,10 +211,9 @@ function mainMenu(person , people){
       familyList += family[i].firstName +" "+ family[i].lastName+"\n";
     }
     alert(familyList);
-
     break;
     case "descendants":
-    // TODO: get person's descendants
+    alert(descendants);
     break;
     case "restart":
     app(people); // restart
@@ -245,6 +243,7 @@ function displayPeople(people){
   alert(people.map(function(person){
     return person.firstName + " " + person.lastName;
   }).join("\n"));
+
 }
 
 function displayPerson(person){
