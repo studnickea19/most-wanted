@@ -222,10 +222,11 @@ function mainMenu(person , people){
     	displayPerson(person);
     break;
     case "family":
-    	displayFamily(person,people);
+    	let descendants = [person]
+    	displayFamily(descendants,people);
     break;
     case "descendants":
-    	displayDescendants(person,people)
+    	displayDescendants(person,people,0);
     break;
     case "restart":
     	app(people); // restart
@@ -289,24 +290,25 @@ function displayDescendants(person, people){
 	alert(descendants);
 }
 
-function getDescendants(person, people){
-	let arrayDescendants = [person];
-    for(let i = 0;i < arrayDescendants.length;i++){
-    	let family = getFamily(arrayDescendants);
-    	for(let j = 0; j < family.length;j++){
-    		if(person.currentSpouse === family[j].id){
-    			family.splice(j,1);
-    		}
+function getDescendants(arrayDescendants, people, counter){
+   if(counter < arrayDescendants.length){
+   	let family = getFamily(arrayDescendants);
+    for(let j = 0; j < family.length;j++){
+    	if(person.currentSpouse === family[j].id){
+    		family.splice(j,1);
     	}
-    	arrayDescendants.concat(family);
-    	for(let j = 0;j < arrayDescendants.length-1;j++){
-    		for(let k = j+1;k < arrayDescendants.length;k++){
-    			if(arrayDescendants[j] === arrayDescendants[k]){
-    				arrayDescendants.splice[k,1];
-    			}
+    }
+    arrayDescendants.concat(family);
+    for(let j = 0;j < arrayDescendants.length-1;j++){
+    	for(let k = j+1;k < arrayDescendants.length;k++){
+    		if(arrayDescendants[j] === arrayDescendants[k]){
+    			arrayDescendants.splice[k,1];
     		}
     	}
     }
+    counter++;
+    getDescendants(arrayDescendants,people,counter);
+   }
     return arrayDescendants;
 }
 
