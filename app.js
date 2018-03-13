@@ -49,7 +49,7 @@ function searchByTraits(people) {
       break;
   }  
   
-  // TODO: Return remaining people that fit in the filter
+  if(filteredPeople.length > 1){
 
   let foundPerson = filteredPeople[0];
 
@@ -128,6 +128,9 @@ function getAge(dob){
 	return parseInt(age);
 }
 
+function setAge(people){
+	people.map(function (el){
+		return getAge(el.dob);
 function searchByOccupation(people) {
   let userInputOccupation = prompt("What is the person's occupation?").toLowerCase();
 
@@ -143,7 +146,7 @@ function searchByOccupation(people) {
 
 function getFamily(person, people){
 	let newArray = people.filter(function (el){
-		if(person.currentSpouse == el.id){
+		if(person.currentSpouse === el.id){
 			return true;
 		}
 		else if(checkParent(person.parents, el)){
@@ -157,6 +160,7 @@ function getFamily(person, people){
 		}
 			
 	});
+
   return newArray;
 }
 
@@ -182,8 +186,7 @@ function checkChild(person1 , person2){
 }
 
 function checkSiblings(parents , person){
-	if(parents === person.parents){
-		return true;
+	if(parents.length > 0){
 	}
 	return false;
 }
@@ -202,7 +205,7 @@ function mainMenu(person , people){
 
   switch(displayOption){
     case "info":
-    displayPerson(person);
+    	displayPerson(person);
     break;
     case "family":
     let family = getFamily(person, people);
@@ -213,10 +216,13 @@ function mainMenu(person , people){
     alert(familyList);
     break;
     case "descendants":
-    alert(descendants);
+      let descendants = [person];
+      displayFamily(descendants,people);
+    	displayDescendants(person,people,0);
+      alert(descendants);
     break;
     case "restart":
-    app(people); // restart
+    	app(people); // restart
     break;
     case "quit":
     return; // stop execution
@@ -260,6 +266,14 @@ function displayPerson(person){
   alert(personInfo);
 }
 
+function displayFamily(person,people){
+	let family = getFamily(person, people);
+  let familyList = "";
+    for(let i = 0; i < family.length; i++){
+      familyList += family[i].firstName +" "+ family[i].lastName+"\n";
+    }
+    alert(familyList);
+}
 // function that prompts and validates user input
 function promptFor(question, valid){
   do{
