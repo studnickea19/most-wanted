@@ -171,7 +171,8 @@ function getFamily(person, people){
 		}
 			
 	});
-	return newArray;
+
+  return newArray;
 }
 
 function checkParent(parents , person){
@@ -218,23 +219,22 @@ function mainMenu(person , people){
 
   switch(displayOption){
     case "info":
-    // TODO: get person's info
+    	displayPerson(person);
     break;
     case "family":
-    // TODO: get person's family
+    	displayFamily(person,family);
     break;
     case "descendants":
     // TODO: get person's descendants
     break;
     case "restart":
-    app(people); // restart
+    	app(people); // restart
     break;
     case "quit":
     return; // stop execution
     default:
     return mainMenu(person, people); // ask again
   }
-  displayPerson(person);
 }
 
 function searchByName(people){
@@ -262,8 +262,22 @@ function displayPerson(person){
   // height, weight, age, name, occupation, eye color.
   var personInfo = "First Name: " + person.firstName + "\n";
   personInfo += "Last Name: " + person.lastName + "\n";
-  // TODO: finish getting the rest of the information to display
+  personInfo += "Gender: " + person.gender + "\n";
+  personInfo += "Age: " + getAge(person.dob) + "\n";
+  personInfo += "Height: " + person.height + "\n";
+  personInfo += "Weight: " + person.weight + "\n";
+  personInfo += "Eye Color: " + person.eyeColor + "\n";
+  personInfo += "Occupation: " + person.occupation + "\n";
   alert(personInfo);
+}
+
+function displayFamily(person,people){
+	let family = getFamily(person, people);
+  let familyList = "";
+    for(let i = 0; i < family.length; i++){
+      familyList += family[i].firstName +" "+ family[i].lastName+"\n";
+    }
+    alert(familyList);
 }
 
 // function that prompts and validates user input
