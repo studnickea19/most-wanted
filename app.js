@@ -252,10 +252,10 @@ function searchByName(people){
 
 // alerts a list of people
 function displayPeople(people){
-  alert(people.map(function(person){
+  let filteredList = people.map(function(person){
     return person.firstName + " " + person.lastName;
-  }).join("\n"));
-
+  }).join("\n");
+	return filteredList;
 }
 
 function displayPerson(person){
