@@ -175,7 +175,7 @@ function getFamily(person, people){
 }
 
 function checkParent(parents , person){
-	for(let i = 0; i<parents.length;i++){
+	for(let i = 0; i < parents.length;i++){
 		if(parents[i] === person.id){
 			return true;
 		}
@@ -228,11 +228,13 @@ function mainMenu(person , people){
     }
     alert(familyList);
     break;
+    // CHECK CODE W/ TJ
     case "descendants":
       let descendants = [person];
-      displayFamily(descendants,people);
-    	displayDescendants(person,people,0);
+      displayFamily(person,people);
+    	displayDescendants(descendants,people,0);
       alert(descendants);
+    break;35c518cab7f1c600e6794af2e4f7832b5c66
     break;
     case "restart":
     	app(people); // restart
@@ -280,7 +282,7 @@ function displayPerson(person){
 }
 
 function displayFamily(person,people){
-	let family = getFamily(person, people);
+	let family = getFamily(person, people,0);
   let familyList = "";
     for(let i = 0; i < family.length; i++){
       familyList += family[i].firstName +" "+ family[i].lastName+"\n";
@@ -299,7 +301,7 @@ function displayDescendants(person, people){
 
 function getDescendants(arrayDescendants, people, counter){
    if(counter < arrayDescendants.length){
-   	let family = getFamily(arrayDescendants);
+   	let family = getFamily(arrayDescendants[counter]);
     for(let j = 0; j < family.length;j++){
     	if(person.currentSpouse === family[j].id){
     		family.splice(j,1);
