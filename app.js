@@ -221,12 +221,7 @@ function mainMenu(person , people){
     	displayPerson(person);
     break;
     case "family":
-    let family = getFamily(person, people);
-    let familyList = "";
-    for(let i = 0; i < family.length; i++){
-      familyList += family[i].firstName +" "+ family[i].lastName+"\n";
-    }
-    alert(familyList);
+    displayFamily(person, people);
     break;
     // CHECK CODE W/ TJ
     case "descendants":
