@@ -292,7 +292,7 @@ function displayDescendants(person, people){
 
 function getDescendants(arrayDescendants, people){
    arrayDescendants = arrayDescendants.concat(getChildren(arrayDescendants, people));
-   arrayDescendants = arrayDescendants.shift();
+   arrayDescendants.shift();
    return arrayDescendants;
 }
 
