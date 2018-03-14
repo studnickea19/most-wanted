@@ -24,7 +24,7 @@ function searchByTraits(people) {
 
   let filteredPeople = people;
   do{
-  	let userSearchChoice = prompt("What would you like to search by? Please type either 'height', 'weight', 'eye color', 'gender', 'age', 'occupation'.");
+  	let userSearchChoice = prompt("What would you like to search by? Please type either 'height', 'weight', 'eye color', 'gender', 'age', 'occupation' or 'quit'.");
 
   	switch(userSearchChoice) {
     	case "height":
@@ -45,7 +45,9 @@ function searchByTraits(people) {
     	case "occupation":
     		filteredPeople = searchByOccupation(filteredPeople);
     		break;
-    
+    	case "quit":
+    		return;
+    		break;
     	default:
       	alert("Invalid search type. Please type one of the following: 'height', 'weight', 'eye color', 'gender', 'age', 'occupation'");
       	searchByTraits(people);
