@@ -111,7 +111,6 @@ function searchByGender(people) {
     }
     // return true if el.gender matches userInputGender
   });
-
   return newArray;
 }
 
@@ -222,11 +221,20 @@ function mainMenu(person , people){
     	displayPerson(person);
     break;
     case "family":
-    	displayFamily(person,people);
+    let family = getFamily(person, people);
+    let familyList = "";
+    for(let i = 0; i < family.length; i++){
+      familyList += family[i].firstName +" "+ family[i].lastName+"\n";
+    }
+    alert(familyList);
     break;
+    // CHECK CODE W/ TJ
     case "descendants":
-    	let descendants = [person];
-    	displayDescendants(descendants,people);
+      let descendants = [person];
+      displayFamily(person,people);
+    	displayDescendants(descendants,people,0);
+      alert(descendants);
+    break;
     break;
     case "restart":
     	app(people); // restart
@@ -256,6 +264,7 @@ function displayPeople(people){
   alert(people.map(function(person){
     return person.firstName + " " + person.lastName;
   }).join("\n"));
+
 }
 
 function displayPerson(person){

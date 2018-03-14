@@ -64,8 +64,3 @@ button:visited{
 	font-size: 15px;
 	font-weight: normal;
 }
-button:visited:focus{
-	background-color: #710303;
-	color: white;
-	border-color: #710303;	
-} 
