@@ -53,7 +53,7 @@ function searchByTraits(people) {
   	/*for(let i = 0; i < filteredPeople.length;i++){
   		console.log(filteredPeople[i].firstName);
   	}*/
-  	alert("We narrowed down the database but we need more information to narrow it down further.");
+  	alert("Your search matched several records, we need more information to narrow down your results.");
   	searchByTraits(filteredPeople);
   }
 
@@ -64,7 +64,7 @@ function searchByTraits(people) {
 }
 
 function searchByHeight(people) {
-  let userInputHeight = prompt("How tall is the person in cm?");
+  let userInputHeight = prompt("How tall is the person in inches?");
 
   let newArray = people.filter(function (el) {
     if(el.height == userInputHeight) {
@@ -115,7 +115,7 @@ function searchByGender(people) {
 }
 
 function searchByAge(people) {
-  let userInputEyeColor = prompt("How old is the person?").toLowerCase();
+  let userInputAge = prompt("How old is the person?").toLowerCase();
 
   let newArray = people.filter(function (el) {
     if(getAge(el.dob) == userInputAge) {
@@ -226,9 +226,7 @@ function mainMenu(person , people){
     // CHECK CODE W/ TJ
     case "descendants":
       let descendants = [person];
-      displayFamily(person,people);
     	displayDescendants(descendants,people,0);
-      alert(descendants);
     break;
     break;
     case "restart":
@@ -245,7 +243,7 @@ function searchByName(people){
   var firstName = promptFor("What is the person's first name?", chars).toLowerCase();
   var lastName = promptFor("What is the person's last name?", chars).toLowerCase();
   let newArray = people.filter(function (el) {
-    if(el.firstName.toLowerCase() + el.lastName.toLowerCase() == firstName + lastName) {
+    if(el.firstName.toLowerCase() + el.lastName.toLowerCase() === firstName + lastName) {
       return true;
     }
     // return true if el. First/Last is equal to input First/Last
