@@ -20,42 +20,40 @@ function app(people){
 }
 
 function searchByTraits(people) {
-  let userSearchChoice = prompt("What would you like to search by? Please type either 'height', 'weight', 'eye color', 'gender', 'age', 'occupation'.");
-  let filteredPeople;
-
-  switch(userSearchChoice) {
-    case "height":
-      filteredPeople = searchByHeight(people);
-      break;
-    case "weight":
-      filteredPeople = searchByWeight(people);
-      break;
-    case "eye color":
-    	filteredPeople = searchByEyeColor(people);
-    	break;
-    case "gender":
-    	filteredPeople = searchByGender(people);
-    	break;
-    case "age":
-    	filteredPeople = searchByAge(people);
-    	break;
-    case "occupation":
-    	filteredPeople = searchByOccupation(people);
-    	break;
-    
-    default:
-      alert("Invalid search type. Please type one of the following: 'height', 'weight', 'eye color', 'gender', 'age', 'occupation'");
-      searchByTraits(people);
-      break;
-  }  
   
-  if(filteredPeople.length > 1){
-  	/*for(let i = 0; i < filteredPeople.length;i++){
-  		console.log(filteredPeople[i].firstName);
-  	}*/
-  	alert("We narrowed down the database but we need more information to narrow it down further.");
-  	searchByTraits(filteredPeople);
-  }
+  let filteredPeople = people;
+  do{
+  	let userSearchChoice = prompt("What would you like to search by? Please type either 'height', 'weight', 'eye color', 'gender', 'age', 'occupation'.");
+
+  	switch(userSearchChoice) {
+    	case "height":
+      	filteredPeople = searchByHeight(filteredPeople);
+     	 break;
+   	 case "weight":
+      	filteredPeople = searchByWeight(filteredPeople);
+      	break;
+    	case "eye color":
+    		filteredPeople = searchByEyeColor(filteredPeople);
+    		break;
+    	case "gender":
+    		filteredPeople = searchByGender(filteredPeople);
+    		break;
+    	case "age":
+    		filteredPeople = searchByAge(filteredPeople);
+    		break;
+    	case "occupation":
+    		filteredPeople = searchByOccupation(filteredPeople);
+    		break;
+    
+    	default:
+      	alert("Invalid search type. Please type one of the following: 'height', 'weight', 'eye color', 'gender', 'age', 'occupation'");
+      	searchByTraits(people);
+      	break;
+  	}  
+  	if(filteredPeople.length > 1){
+  		alert("We narrowed down the database but we need more information to narrow it down further.");
+  	}
+  }while(filteredPeople.length > 1);
 
   let foundPerson = filteredPeople[0];
 
@@ -223,12 +221,9 @@ function mainMenu(person , people){
     case "family":
     displayFamily(person, people);
     break;
-    // CHECK CODE W/ TJ
     case "descendants":
       let descendants = [person];
-      displayFamily(person,people);
     	displayDescendants(descendants,people,0);
-      alert(descendants);
     break;
     break;
     case "restart":
@@ -286,7 +281,7 @@ function displayFamily(person,people){
 }
 
 function displayDescendants(person, people){
-	let arrayDescendants = getDescendants(person, people,0);
+	let arrayDescendants = getDescendants(person, people);
 	let descendants = "";
 	for(let i = 0;i < arrayDescendants.length;i++){
 		descendants += arrayDescendants[i].firstName+" "+arrayDescendants[i].lastName+"\n";
@@ -294,26 +289,29 @@ function displayDescendants(person, people){
 	alert(descendants);
 }
 
-function getDescendants(arrayDescendants, people, counter){
-   if(counter < arrayDescendants.length){
-   	let family = getFamily(arrayDescendants[counter],people);
-    for(let j = 0; j < family.length;j++){
-    	if(arrayDescendants[counter].currentSpouse === family[j].id){
-    		family.splice(j,1);
-    	}
-    }
-    arrayDescendants.concat(family);
-    for(let j = 0;j < arrayDescendants.length-1;j++){
-    	for(let k = j+1;k < arrayDescendants.length;k++){
-    		if(arrayDescendants[j] === arrayDescendants[k]){
-    			arrayDescendants.splice[k,1];
-    		}
-    	}
-    }
-    counter++;
-    getDescendants(arrayDescendants,people,counter);
-   }
-    return arrayDescendants;
+function getDescendants(arrayDescendants, people){
+   arrayDescendants = arrayDescendants.concat(getChildren(arrayDescendants, people));
+   arrayDescendants = arrayDescendants.shift();
+   return arrayDescendants;
+}
+
+function getChildren(familyArray, people){
+	let newArray = people;
+	let childrenArray = [];
+	let temporaryArray = [];
+	for(let i = 0; i < familyArray.length;i++){
+		temporaryArray = newArray.filter(function (el){
+			if(checkChild(familyArray[i], el)){
+				return true;
+			}
+			
+		});
+		childrenArray = childrenArray.concat(temporaryArray);
+	}
+	if(childrenArray.length > 0){
+		return childrenArray.concat(getChildren(childrenArray, people))
+	}
+	return [];
 }
 
 // function that prompts and validates user input
