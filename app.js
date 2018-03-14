@@ -186,7 +186,7 @@ function checkParent(parents , person){
 
 function checkChild(person1 , person2){
 	let parents = person2.parents;
-	if(parents > 0){
+	if(parents.length > 0){
 		for(let i = 0;i < parents.length;i++){
 			if(parents[i] === person1.id){
 				return true;
@@ -273,7 +273,7 @@ function displayPerson(person){
 }
 
 function displayFamily(person,people){
-	let family = getFamily(person, people,0);
+	let family = getFamily(person, people);
   let familyList = "";
     for(let i = 0; i < family.length; i++){
       familyList += family[i].firstName +" "+ family[i].lastName+"\n";
@@ -282,19 +282,19 @@ function displayFamily(person,people){
 }
 
 function displayDescendants(person, people){
-	let arrayDescendants = getDescendants(person, people);
+	let arrayDescendants = getDescendants(person, people,0);
 	let descendants = "";
 	for(let i = 0;i < arrayDescendants.length;i++){
-		descendants += arrayDescendants[i].firstName+" "+arrayDescendants[i].lastName+"/n";
+		descendants += arrayDescendants[i].firstName+" "+arrayDescendants[i].lastName+"\n";
 	}
 	alert(descendants);
 }
 
 function getDescendants(arrayDescendants, people, counter){
    if(counter < arrayDescendants.length){
-   	let family = getFamily(arrayDescendants[counter]);
+   	let family = getFamily(arrayDescendants[counter],people);
     for(let j = 0; j < family.length;j++){
-    	if(person.currentSpouse === family[j].id){
+    	if(arrayDescendants[counter].currentSpouse === family[j].id){
     		family.splice(j,1);
     	}
     }
