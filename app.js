@@ -234,7 +234,7 @@ function mainMenu(person , people){
       displayFamily(person,people);
     	displayDescendants(descendants,people,0);
       alert(descendants);
-    break;35c518cab7f1c600e6794af2e4f7832b5c66
+    break;
     break;
     case "restart":
     	app(people); // restart
