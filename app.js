@@ -52,7 +52,7 @@ function searchByTraits(people) {
       	break;
   	}  
   	if(filteredPeople.length > 1){
-  		alert("We narrowed down the database but we need more information to narrow it down further.");
+  		alert("Your search returned several records. We need more information to narrow down your search.");
   	}
   }while(filteredPeople.length > 1);
 
