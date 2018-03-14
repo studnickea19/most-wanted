@@ -21,6 +21,7 @@ function app(people){
 
 function searchByTraits(people) {
   
+
   let filteredPeople = people;
   do{
   	let userSearchChoice = prompt("What would you like to search by? Please type either 'height', 'weight', 'eye color', 'gender', 'age', 'occupation'.");
@@ -62,7 +63,7 @@ function searchByTraits(people) {
 }
 
 function searchByHeight(people) {
-  let userInputHeight = prompt("How tall is the person in cm?");
+  let userInputHeight = prompt("How tall is the person in inches?");
 
   let newArray = people.filter(function (el) {
     if(el.height == userInputHeight) {
@@ -113,7 +114,7 @@ function searchByGender(people) {
 }
 
 function searchByAge(people) {
-  let userInputEyeColor = prompt("How old is the person?").toLowerCase();
+  let userInputAge = prompt("How old is the person?").toLowerCase();
 
   let newArray = people.filter(function (el) {
     if(getAge(el.dob) == userInputAge) {
@@ -240,7 +241,7 @@ function searchByName(people){
   var firstName = promptFor("What is the person's first name?", chars).toLowerCase();
   var lastName = promptFor("What is the person's last name?", chars).toLowerCase();
   let newArray = people.filter(function (el) {
-    if(el.firstName.toLowerCase() + el.lastName.toLowerCase() == firstName + lastName) {
+    if(el.firstName.toLowerCase() + el.lastName.toLowerCase() === firstName + lastName) {
       return true;
     }
     // return true if el. First/Last is equal to input First/Last
